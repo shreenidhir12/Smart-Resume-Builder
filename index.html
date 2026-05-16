@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 Smart Resume Builder</h1>
+            <p>Create your professional resume in minutes</p>
+        </header>
+
+        <form id="resumeForm">
+            <!-- Personal Information -->
+            <section class="form-section">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" id="address">
+                </div>
+                <div class="form-group">
+                    <label>LinkedIn Profile</label>
+                    <input type="url" id="linkedin">
+                </div>
+            </section>
+
+            <!-- Professional Summary -->
+            <section class="form-section">
+                <h2>Professional Summary</h2>
+                <div class="form-group">
+                    <textarea id="summary" rows="4" placeholder="Write a brief summary about yourself..."></textarea>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section class="form-section">
+                <h2>Work Experience</h2>
+                <div id="experienceContainer">
+                    <div class="experience-item">
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" class="jobTitle" placeholder="e.g., Software Developer">
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" class="company" placeholder="Company Name">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input type="month" class="startDate">
+                            </div>
+                            <div class="form-group">
+                                <label>End Date</label>
+                                <input type="month" class="endDate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Responsibilities</label>
+                            <textarea class="responsibilities" rows="3" placeholder="Describe your responsibilities..."></textarea>
+                        </div>
+                        <button type="button" class="remove-btn" onclick="removeExperience(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" class="add-btn" onclick="addExperience()">+ Add More Experience</button>
+            </section>
+
+            <!-- Education -->
+            <section class="form-section">
+                <h2>Education</h2>
+                <div id="educationContainer">
+                    <div class="education-item">
+                        <div class="form-group">
+                            <label>Degree</label>
+                            <input type="text" class="degree" placeholder="e.g., B.Tech in CS">
+                        </div>
+                        <div class="form-group">
+                            <label>Institution</label>
+                            <input type="text" class="institution" placeholder="University/College Name">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Year of Passing</label>
+                                <input type="number" class="year" placeholder="2024">
+                            </div>
+                            <div class="form-group">
+                                <label>Percentage/CGPA</label>
+                                <input type="text" class="percentage" placeholder="8.5 CGPA">
+                            </div>
+                        </div>
+                        <button type="button" class="remove-btn" onclick="removeEducation(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" class="add-btn" onclick="addEducation()">+ Add More Education</button>
+            </section>
+
+            <!-- Skills -->
+            <section class="form-section">
+                <h2>Skills</h2>
+                <div class="form-group">
+                    <label>Technical Skills</label>
+                    <input type="text" id="technicalSkills" placeholder="JavaScript, Python, React, Node.js (comma separated)">
+                </div>
+                <div class="form-group">
+                    <label>Soft Skills</label>
+                    <input type="text" id="softSkills" placeholder="Teamwork, Communication, Leadership (comma separated)">
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="form-section">
+                <h2>Projects</h2>
+                <div id="projectsContainer">
+                    <div class="project-item">
+                        <div class="form-group">
+                            <label>Project Name</label>
+                            <input type="text" class="projectName" placeholder="Project Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Technologies Used</label>
+                            <input type="text" class="techStack" placeholder="HTML, CSS, JavaScript">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="projectDesc" rows="2" placeholder="Project description..."></textarea>
+                        </div>
+                        <button type="button" class="remove-btn" onclick="removeProject(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" class="add-btn" onclick="addProject()">+ Add More Projects</button>
+            </section>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Generate Resume</button>
+                <button type="button" class="reset-btn" onclick="resetForm()">Reset Form</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    padding: 20px;
+}
+
+.preview-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.preview-header {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.preview-header h1 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.print-btn, .back-btn, .download-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.print-btn {
+    background: #4CAF50;
+    color: white;
+}
+
+.back-btn {
+    background: #667eea;
+    color: white;
+}
+
+.download-btn {
+    background: #ff9800;
+    color: white;
+}
+
+.print-btn:hover, .back-btn:hover, .download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Resume Preview Styles */
+.resume-preview {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.resume-header {
+    text-align: center;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.resume-header h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: #666;
+    font-size: 14px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    color: #667eea;
+    border-left: 4px solid #667eea;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.experience-item, .education-item, .project-item {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.experience-item h3, .project-item h3 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.company, .institution {
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.date {
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background: #667eea;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+@media print {
+    .preview-header {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .resume-preview {
+        padding: 20px;
+        box-shadow: none;
+    }
+}

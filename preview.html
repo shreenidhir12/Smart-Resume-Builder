@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Preview</title>
+    <link rel="stylesheet" href="preview-style.css">
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-header">
+            <h1>📄 Your Resume Preview</h1>
+            <div class="action-buttons">
+                <button onclick="window.print()" class="print-btn">🖨️ Print/Save as PDF</button>
+                <button onclick="goBack()" class="back-btn">✏️ Edit Resume</button>
+                <button onclick="downloadHTML()" class="download-btn">💾 Download HTML</button>
+            </div>
+        </div>
+        
+        <div id="resumePreview" class="resume-preview">
+            <!-- Resume will be displayed here -->
+        </div>
+    </div>
+    
+    <script src="preview-script.js"></script>
+</body>
+</html>

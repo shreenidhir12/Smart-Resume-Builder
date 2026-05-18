@@ -1,156 +1,201 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --black: #0a0a0a;
+    --dark: #1a1a1a;
+    --mid: #444;
+    --muted: #777;
+    --border: #ccc;
+    --light-border: #e8e8e8;
+    --bg: #f0f0ee;
+    --white: #ffffff;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f2f5;
-    padding: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
 }
 
-.preview-container {
-    max-width: 1000px;
+.action-bar {
+    background: var(--black);
+    padding: 14px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.action-bar-inner {
+    max-width: 860px;
     margin: 0 auto;
-}
-
-.preview-header {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.preview-header h1 {
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.action-buttons {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.print-btn, .back-btn, .download-btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.bar-logo {
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 14px;
-    transition: all 0.3s;
+    color: #888;
 }
 
-.print-btn {
-    background: #4CAF50;
-    color: white;
-}
+.bar-actions { display: flex; gap: 10px; }
 
-.back-btn {
-    background: #667eea;
-    color: white;
-}
-
-.download-btn {
-    background: #ff9800;
-    color: white;
-}
-
-.print-btn:hover, .back-btn:hover, .download-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* Resume Preview Styles */
-.resume-preview {
+.btn-primary {
     background: white;
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: var(--black);
+    border: none;
+    padding: 8px 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-.resume-header {
-    text-align: center;
-    border-bottom: 3px solid #667eea;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-outline {
+    background: none;
+    color: #aaa;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s;
 }
 
-.resume-header h1 {
-    color: #333;
-    margin-bottom: 10px;
-}
+.btn-outline:hover { border-color: #888; color: white; }
 
-.contact-info {
+.resume-wrap {
+    padding: 36px 20px 60px;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    color: #666;
-    font-size: 14px;
 }
 
-.section {
+.resume-page {
+    background: var(--white);
+    width: 100%;
+    max-width: 780px;
+    min-height: 1050px;
+    padding: 48px 56px;
+    border: 1px solid var(--border);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--dark);
+}
+
+.r-header {
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 14px;
     margin-bottom: 20px;
 }
 
-.section h2 {
-    color: #667eea;
-    border-left: 4px solid #667eea;
-    padding-left: 10px;
-    margin-bottom: 15px;
+.r-name {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: var(--black);
+    margin-bottom: 6px;
 }
 
-.experience-item, .education-item, .project-item {
-    margin-bottom: 15px;
-    padding: 10px;
-}
-
-.experience-item h3, .project-item h3 {
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.company, .institution {
-    color: #666;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-.date {
-    color: #999;
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.skills-list {
+.r-contact {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 4px 20px;
+    font-size: 12.5px;
+    color: var(--mid);
 }
 
-.skill-tag {
-    background: #667eea;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
+.r-contact a { color: var(--mid); text-decoration: none; }
+.r-contact a:hover { text-decoration: underline; }
+.sep { color: var(--border); }
+
+.r-section { margin-bottom: 18px; }
+
+.r-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--black);
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 4px;
+    margin-bottom: 12px;
 }
+
+.r-summary { font-size: 13.5px; line-height: 1.6; }
+
+.r-skills-table {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 5px 16px;
+    font-size: 13px;
+}
+
+.r-skill-label { font-weight: 500; color: var(--mid); font-size: 12.5px; }
+
+.r-entry {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--light-border);
+}
+
+.r-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.r-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2px;
+}
+
+.r-entry-title { font-weight: 600; font-size: 14px; color: var(--black); }
+
+.r-entry-links {
+    font-size: 11.5px;
+    color: var(--muted);
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+    margin-left: 12px;
+}
+
+.r-entry-links a { color: var(--muted); text-decoration: none; }
+.r-entry-links a:hover { text-decoration: underline; }
+
+.r-entry-sub { font-size: 13px; color: var(--mid); font-weight: 500; margin-bottom: 2px; }
+
+.r-entry-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 5px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.r-entry-desc { font-size: 13px; line-height: 1.6; }
+.r-entry-desc ul { padding-left: 16px; }
+.r-entry-desc li { margin-bottom: 3px; }
+
+.r-cert-list { list-style: none; font-size: 13px; }
+.r-cert-list li { padding: 3px 0; border-bottom: 1px solid var(--light-border); }
+.r-cert-list li:last-child { border-bottom: none; }
 
 @media print {
-    .preview-header {
-        display: none;
-    }
-    
-    body {
-        background: white;
-        padding: 0;
-    }
-    
-    .resume-preview {
-        padding: 20px;
-        box-shadow: none;
-    }
+    .no-print { display: none !important; }
+    body { background: white; }
+    .resume-wrap { padding: 0; }
+    .resume-page { border: none; padding: 32px 40px; max-width: 100%; font-size: 12.5px; }
+    .r-name { font-size: 22px; }
+}
+
+@media (max-width: 640px) {
+    .action-bar { padding: 12px 16px; }
+    .bar-logo { display: none; }
+    .resume-page { padding: 28px 20px; }
+    .r-name { font-size: 20px; }
+    .r-entry-header { flex-direction: column; }
+    .r-entry-links { margin-left: 0; margin-top: 2px; }
 }

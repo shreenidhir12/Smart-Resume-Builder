@@ -51,7 +51,23 @@
                     </section>
 
                     <section class="form-section">
-                        <div class="section-label">02 — Professional Summary</div>
+    <div class="section-label">02 — Professional Summary</div>
+    <div class="form-group">
+        <label>Summary <span class="hint">(2 lines max)</span></label>
+        <textarea id="summary" rows="3" placeholder="First year B.Tech IT student with experience in HTML, CSS, JavaScript..."></textarea>
+    </div>
+    <button type="button" class="ai-btn" onclick="improveSection('summary')">
+        ✦ Improve with AI
+    </button>
+    <div id="summary-ai-result" class="ai-result" style="display:none;">
+        <div class="ai-result-label">✦ AI Suggestion</div>
+        <div class="ai-result-text" id="summary-ai-text"></div>
+        <div class="ai-result-actions">
+            <button type="button" class="ai-use-btn" onclick="useAISuggestion('summary')">Use This</button>
+            <button type="button" class="ai-dismiss-btn" onclick="dismissAI('summary')">Dismiss</button>
+        </div>
+    </div>
+</section>
                         <div class="form-group">
                             <label>Summary <span class="hint">(2 lines max)</span></label>
                             <textarea id="summary" rows="3" placeholder="Final year B.Tech CS student with experience building web applications using HTML, CSS, and JavaScript."></textarea>
@@ -78,6 +94,17 @@
                                 <input type="text" id="skillOther" placeholder="REST APIs, MySQL, Agile">
                             </div>
                         </div>
+                        <button type="button" class="ai-btn" onclick="improveSection('skills')">
+                        ✦ Improve Skills with AI
+                    </button>
+                    <div id="skills-ai-result" class="ai-result" style="display:none;">
+                        <div class="ai-result-label">✦ AI Suggestion</div>
+                        <div class="ai-result-text" id="skills-ai-text"></div>
+                        <div class="ai-result-actions">
+                            <button type="button" class="ai-use-btn" onclick="useAISuggestion('skills')">Use This</button>
+                            <button type="button" class="ai-dismiss-btn" onclick="dismissAI('skills')">Dismiss</button>
+                        </div>
+                    </div>
                     </section>
 
                     <section class="form-section">
@@ -170,6 +197,7 @@
                             </div>
                         </div>
                         <button type="button" class="add-btn" onclick="addEducation()">+ Add Education</button>
+                    
                     </section>
 
                     <section class="form-section">

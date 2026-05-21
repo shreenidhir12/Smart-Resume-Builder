@@ -175,3 +175,125 @@ function resetForm() {
         c.querySelectorAll('input, textarea').forEach(el => el.value = '');
     });
 }
+// ── Gemini AI Integration (FREE) ─────────────────────────────
+
+const GEMINI_KEY = 'AIzaSyDEEvjI99wk0eVmR_ZGFz1sAXClK7m5Oes';
+
+async function improveSection(section) {
+
+    // Find the button and disable it while loading
+    const btn = document.querySelector(`button[onclick="improveSection('${section}')"]`);
+    btn.disabled = true;
+    btn.textContent = '⏳ Thinking...';
+
+    let prompt = '';
+
+    // Build prompt based on which section
+    if (section === 'summary') {
+        const text = document.getElementById('summary').value.trim();
+
+        if (!text) {
+            alert('Please write something in Summary first!');
+            btn.disabled = false;
+            btn.textContent = '✦ Improve with AI';
+            return;
+        }
+
+        prompt = `You are a professional resume writer for top tech companies like Google and Apple.
+Rewrite this resume summary in 2 sentences maximum.
+Make it professional, specific, and impressive.
+Do NOT use words like "passionate" or "enthusiastic".
+Return ONLY the improved text. No explanation.
+
+Original: ${text}`;
+    }
+
+    if (section === 'skills') {
+        const languages  = document.getElementById('skillLanguages').value.trim();
+        const frameworks = document.getElementById('skillFrameworks').value.trim();
+        const tools      = document.getElementById('skillTools').value.trim();
+        const other      = document.getElementById('skillOther').value.trim();
+
+        if (!languages) {
+            alert('Please fill in your Skills first!');
+            btn.disabled = false;
+            btn.textContent = '✦ Improve Skills with AI';
+            return;
+        }
+
+        prompt = `You are a professional resume writer.
+Clean up these skills: fix spelling, add spaces after commas, remove duplicates, organize properly.
+Return ONLY in this exact format, nothing else:
+Languages: ...
+Frameworks: ...
+Tools: ...
+Other: ...
+
+Input:
+Languages: ${languages}
+Frameworks: ${frameworks}
+Tools: ${tools}
+Other: ${other}`;
+    }
+
+    // Call Gemini API
+    try {
+        const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }]
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        // Get the AI response text
+        const result = data.candidates[0].content.parts[0].text.trim();
+
+        // Show the result box
+        document.getElementById(`${section}-ai-text`).textContent = result;
+        document.getElementById(`${section}-ai-result`).style.display = 'block';
+
+    } catch (err) {
+        alert('Something went wrong. Check your API key and internet.');
+        console.error(err);
+    }
+
+    // Re-enable button
+    btn.disabled = false;
+    btn.textContent = section === 'summary' ? '✦ Improve with AI' : '✦ Improve Skills with AI';
+}
+
+// When user clicks "Use This" — copy AI text into the form
+function useAISuggestion(section) {
+    const text = document.getElementById(`${section}-ai-text`).textContent;
+
+    if (section === 'summary') {
+        document.getElementById('summary').value = text;
+    }
+
+    if (section === 'skills') {
+        const lines = text.split('\n');
+        lines.forEach(line => {
+            if (line.startsWith('Languages:'))
+                document.getElementById('skillLanguages').value = line.replace('Languages:', '').trim();
+            if (line.startsWith('Frameworks:'))
+                document.getElementById('skillFrameworks').value = line.replace('Frameworks:', '').trim();
+            if (line.startsWith('Tools:'))
+                document.getElementById('skillTools').value = line.replace('Tools:', '').trim();
+            if (line.startsWith('Other:'))
+                document.getElementById('skillOther').value = line.replace('Other:', '').trim();
+        });
+    }
+
+    dismissAI(section);
+}
+
+// Hide the AI result box
+function dismissAI(section) {
+    document.getElementById(`${section}-ai-result`).style.display = 'none';
+}

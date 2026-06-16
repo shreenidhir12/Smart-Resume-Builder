@@ -25,7 +25,7 @@
                         <div class="form-grid two-col">
                             <div class="form-group">
                                 <label>Full Name <span class="req">*</span></label>
-                                <input type="text" id="fullName" placeholder="Shreenidhi Ramasubramanian" required>
+                                <input type="text" id="fullName" placeholder="Enter your full name" required>
                             </div>
                             <div class="form-group">
                                 <label>Email <span class="req">*</span></label>
@@ -54,19 +54,11 @@
     <div class="section-label">02 — Professional Summary</div>
     <div class="form-group">
         <label>Summary <span class="hint">(2 lines max)</span></label>
-        <textarea id="summary" rows="3" placeholder="First year B.Tech IT student with experience in HTML, CSS, JavaScript..."></textarea>
+        <textarea id="summary" rows="3" placeholder="Write a brief professional summary about yourself..." required></textarea>
     </div>
-    <button type="button" class="ai-btn" onclick="improveSection('summary')">
-        ✦ Improve with AI
-    </button>
-    <div id="summary-ai-result" class="ai-result" style="display:none;">
-        <div class="ai-result-label">✦ AI Suggestion</div>
-        <div class="ai-result-text" id="summary-ai-text"></div>
-        <div class="ai-result-actions">
-            <button type="button" class="ai-use-btn" onclick="useAISuggestion('summary')">Use This</button>
-            <button type="button" class="ai-dismiss-btn" onclick="dismissAI('summary')">Dismiss</button>
-        </div>
-    </div>
+    <button type="button" class="ai-btn" onclick="alert('AI enhancement feature coming soon!')">
+    ✦ AI Enhancement (Coming Soon)
+</button>
 </section>
                         <div class="form-group">
                             <label>Summary <span class="hint">(2 lines max)</span></label>
